@@ -1,0 +1,588 @@
+
+/*
+التنسيقات العامة
+*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*خط عربي انيق
+*/
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.container{
+    margin: 0 auto;
+    padding: 0 20px; 
+        /*14------*/ 
+    max-width: 1200px;    
+
+}
+body{
+   
+background-color: #fff;
+    overflow-x: hidden;
+/*راس الصفحة
+*/
+/*النافبار نفس التنسيق لضمان التناسق
+*/}
+header{
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 25px 0 ;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+    /*جعل النافبار يطفو فوق الخلفية 10
+*/
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.navbar{    /*12*/ 
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    
+}
+.logo h1{
+    color: #333;
+    font-size: 1.6rem;
+}
+.logo  h1 span{
+    color: #ff9800;
+}
+.btn-order{
+    border: 2px  solid #ff9800;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ff9800;
+    padding: 8px 25px;
+    transition: 0.3s;
+}
+.btn-order:hover{
+    background-color: #ff9800;
+    color: #fff;
+}
+/*قسم الترحيب
+/* --- 3. قسم الهيرو بخلفية الصورة (درس 7 الخلفيات) --- */
+.hero-bg {
+    min-height: 100vh; /* ملء الشاشة بالكامل عمودياً */
+    
+    /* --- خصائص الخلفية --- */
+    background-image: url('2.jpg'); /* صورة وجبة افتراضية فخمة */
+    background-size: cover; /* جعل الصورة تغطي القسم بالكامل دون تشويه */
+    background-position: center; /* توسيط الصورة */
+    background-repeat: no-repeat; /* عدم تكرار الصورة */
+    background-attachment: fixed; /* تأثير Parallax (الخلفية ثابتة عند التمرير) */
+
+    /* لتوسيط المحتوى النصي */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* ضروري للـ Overlay */
+}
+
+
+/*طبقة التعتيم درس 11
+*/
+.overlay{
+position: absolute;
+top: 0;
+left: 0;
+z-index: 1;
+width: 100%;
+height: 100%;
+/*لون اسود بشفافية لجعل التص ابيض واضحا فوق الصورة وتحت النص
+*/
+background-color: rgba(0, 0, 0, 0.6);
+}
+/*المحتوى النصي فوق الoverlay
+*/
+.hero-content{
+    color:#fff;
+    /*توسيط النص افقيا
+*/
+    text-align: center;
+    position: relative;
+    /*فوق الoverlay
+*/
+    z-index: 2;
+        /*14------*/ 
+        /*عرض النص ليصبح يشكل مريح
+*/
+    max-width: 800px;
+}
+.hero-title{
+    /*حجم كبير للفخامة
+*/
+    font-size: 4rem;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    /*ظل للنص لزيادة الوضوح درس9
+*/
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    font-weight: 800;
+}
+.hero-title span{
+    color: #ff9800;
+}
+.hero-desc{
+    font-size: 1.4rem;
+    margin-bottom: 45px;
+    line-height: 1.8;
+    font-weight: 300;
+    /*شفافية بسيطة للنص الوصفي
+*/
+    opacity: 0.9;
+}
+
+
+.btn-primary{
+    background-color: #ff9800;
+    border-radius: 10px;
+    padding: 18px 50px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.3s;
+    /*12*/ 
+}
+    /*12*/ 
+.btn-primary:hover{
+    /*حركة بسيطة درس 12
+*/
+    transform: translatet y(-3px);
+    background-color: #e68a00;
+}
+/* --- 4. الميديا كويري للتجاوب (درس 13) --- */
+
+@media (max-width: 992px) {
+    .hero-title { font-size: 3rem; }
+    .hero-desc { font-size: 1.2rem; }
+}
+@media (max-width: 768px) {
+    .hero-bg {
+        background-attachment: scroll; /* إيقاف Parallax في الموبايل للأداء */
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+        padding: 0 10px;
+    }
+
+    .hero-desc {
+        font-size: 1.1rem;
+        padding: 0 15px;
+    }
+
+    .btn-primary {
+        padding: 15px 35px;
+        width: 80%; /* الزر يأخذ مساحة أكبر في الموبايل */
+    }
+}
+
+
+/*قسم الاسعار والمميزات
+*/
+/* تنسيقات القسم الثالث */
+.pricing-section {
+    padding: 100px 0;
+    background-color: #f1f1f1; /* خلفية بلون رمادي فاتح لتمييز القسم (درس 7) */
+    text-align: center;
+}
+
+.pricing-wrapper {
+    display: flex;
+    justify-content: space-around; /* توزيع الوجبات الثلاثة بمسافات متساوية (درس 11) */
+    align-items: center;
+    flex-wrap: wrap; /* للتجاوب في الموبايل */
+    gap: 30px;
+}
+
+.price-item {
+    flex: 1;
+    min-width: 250px; /* ضمان عدم صغر العناصر جداً */
+    display: flex;
+    flex-direction: column; /* ترتيب الصورة والاسم والسعر عمودياً (درس 11) */
+    align-items: center;
+}
+
+/* تنسيق الصورة الدائرية (درس 7) */
+.img-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; /* هذا ما يجعل الصورة دائرة تماماً */
+    overflow: hidden; /* لإخفاء زوايا الصورة الأصلية */
+    border: 5px solid #fff; /* إطار أبيض حول الدائرة */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* ظل خفيف (درس 11) */
+    margin-bottom: 20px;
+    transition: transform 0.3s ease; /* درس الترانزشن 12 */
+}
+
+.img-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* لضمان ملء الدائرة بالكامل دون تمطيط */
+}
+
+/* تأثير التكبير عند تمرير الماوس */
+.img-circle:hover {
+    transform: scale(1.1) rotate(5deg); /* تكبير مع دوران بسيط (درس 12) */
+}
+
+.item-name {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* تنسيق السعر (درس 8 و 9) */
+.price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ff9800; /* لون التمييز البرتقالي */
+    background-color: #333; /* خلفية غامقة للسعر */
+    color: #fff;
+    padding: 5px 20px;
+    border-radius: 50px; /* جعل خلفية السعر بيضاوية */
+}
+
+/* --- التجاوب (Media Query) --- */
+@media (max-width: 768px) {
+    .pricing-wrapper {
+        flex-direction: column; /* ترتيبهم تحت بعض في الموبايل */
+        gap: 50px;
+    }
+    
+    .img-circle {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+   /*13*/ 
+   /*تنسيقات القسم الجديد*/
+.features-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /*مسافة بين النص والصورة*/
+    gap:50px;
+}
+/*تنسق النص الجهة اليمنى  */
+.features-text{
+    flex: 1;
+}
+
+.features-section{
+    padding: 80px 0;
+    background-color: #ffff;
+}
+
+.features-text h2{
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+.features-text h2 span{
+    color: #ff9800;
+}
+.features-text p{
+line-height: 1.8;
+color: #666;
+font-size: 1.1rem;
+margin-bottom: 30px;
+}
+.btn-more{
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    /*تنسيق بسيط للزر درس 7  */
+    border-bottom: 2px solid;
+    padding-bottom: 5px;
+    transition: 0.3s;
+}
+.btn-more:hover{
+    color:#ff9800;
+}
+/*تنسيق شبكة الصور (الجهة اليسرى) */
+ /*13*/
+
+.features-grid{
+    flex: 1;
+    display: flex;
+     /*هذا هو السر لتصبح الصورة تنزل سطر جديد دؤس 11*/
+    flex-wrap: wrap;
+    justify-content: center;
+    /*المسافة بين الصور*/
+    gap: 15px; 
+}
+.img-box{
+    /*لاخفاء اي جزء خارج الصورى*/
+    overflow: hidden;
+    /*جعل كل صورة تاخذ نصف العرض تقريبا في كل سطر درس 2*/
+    flex:  0 0 calc(50% - 15px);
+    /*حواف دائرية درس 7*/
+    border-radius: 15px;
+}
+/*12-----*/ 
+.img-box img{
+width: 100%;
+height: 200px;
+/*لضمان عدم تشوه الصورة*/ 
+object-fit: cover;
+/*درس الترانسزشن 12-*/ 
+transition:transform 0.5s; 
+  }/*تكبير الصورة قليلا */
+  /* تأثير عند تمرير الماوس على الصورة */
+  .img-box img:hover{
+    transform: scale(1.1);/*-----?-------------------*/ 
+}
+/* --- التجاوب (Media Query) --- */
+@media(max-width:768px) {
+  .features-wrapper{
+        /*جعل النص فةق الصورة */
+        flex-direction: column;
+        text-align: center;
+    }
+    .features-grid{
+        width: 100%;
+    }
+   /*البقاء على صورتين في السطر حتى في الموبيال */
+ .img-box{
+    flex:  0 0 calc(50% - 10px);
+ }  
+}
+@media (max-width:480px) {
+        .img-box{
+                /*صورة واحدة ققط  في السطر للشاشات الصغيرة جدا*/ 
+          flex: 0 0 100%;
+        }  
+    }
+
+/*قائمة الماكولات*/
+/*تنسيقات قسم القائمة */
+.menu-section{
+    padding: 80px 0;
+    background-color: #fff;
+    text-align: center;
+}
+.section-title{
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #333;
+}
+.section-title span{
+    color: #ff9800;
+}
+     /*13*/ 
+
+/* تنسيق الصف (درس 11) */
+.menu-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 40px; /* مسافة بين كل صف وصف */
+}
+/* تنسيق العنصر الواحد (الصورة + النص) */
+.menu-item {
+    flex: 1;
+    display: flex; /* جعل الصورة بجانب المحتوى النصي */
+    align-items: center;
+    text-align: right; /* محاذاة النص لليمين */
+    gap: 20px;
+}
+/* تنسيق الصورة الدائرية (درس 7) */
+.item-img-circle {
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0; /* منع الصورة من الصغر عند ضيق المساحة */
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #ff9800;
+}
+.item-img-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* تنسيق منطقة النص */
+.item-info {
+    flex: 1;
+}
+.item-header {
+    border-bottom: 2px solid #eee; /* الخط تحت السعر (درس 7) */
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.item-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ff9800;
+}
+.item-desc {
+    font-size: 0.95rem;
+    color: #777;
+    line-height: 1.5;
+}
+     /*------------------*/ 
+
+.item-name{
+    color: #333;
+    font-size: 1.5rem;
+}
+/* --- التجاوب (Media Query) --- */
+@media (max-width: 768px) {
+    .menu-row {
+        flex-direction: column; /* كل وجبة في سطر منفصل في الموبايل */
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .menu-item {
+        width: 100%;
+    }
+}
+     /*13*/ 
+
+/*قائمة التذييل
+*/
+.main-footer {
+    background-color: #1a1a1a; /* خلفية داكنة فخمة */
+    color: #ffffff;
+    padding: 80px 0 30px; /* مسافة علوية كبيرة وسفلية صغيرة */
+    font-family: 'Cairo', sans-serif;
+}
+
+.footer p{
+    color: #aaa;
+}
+    /*13------*/ 
+/* حاوية الفوتر (Flexbox) */
+.footer-wrapper {
+    display: flex;
+    justify-content: space-between; /* توزيع يمين ويسار */
+    align-items: flex-start;
+    gap: 60px;
+    flex-wrap: wrap; /* للسماح بالعناصر بالنزول في الموبايل */
+}
+        /*14------*/ 
+.footer-form {
+    flex: 1;
+    min-width: 300px;
+}
+.footer-form h3 {
+    font-size: 1.8rem;
+    color: #ff9800; /* لون التمييز البرتقالي */
+    margin-bottom: 25px;
+    position: relative;
+}
+/* تنسيق حقول الإدخال (دروس 5 و6) */
+.input-group {
+    margin-bottom: 15px;
+}
+.input-group input {
+    width: 100%;
+    padding: 14px 20px;
+    border: 1px solid #333;
+    background-color: #262626;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none; /* إزالة الإطار الافتراضي (درس 9) */
+    transition: 0.3s; /* انتقال ناعم (درس 12) */
+}
+/* تأثير الفوكس عند الكتابة (درس 11) */
+.input-group input:focus {
+    border-color: #ff9800;
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.3);
+}
+/* زر الإرسال */
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    background-color: #ff9800;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.btn-submit:hover {
+    background-color: #e68a00;
+    transform: translateY(-3px); /* رفعة بسيطة (درس 12) */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+        /*14------*/ 
+/* --- الجزء الثاني: معلومات التواصل والأيقونات (الجهة اليسرى) --- */
+.footer-info {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.footer-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.footer-info p {
+    color: #aaa;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+        /*14------*/ 
+/* تنسيق أيقونات فونت أوسم (درس 12) */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.social-icon {
+    text-decoration: none;
+    color: #fff;
+    background-color: #333;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* دائرة كاملة (درس 7) */
+    font-size: 1.3rem;
+    transition: 0.4s ease-in-out;
+}
+
+.social-icon:hover {
+    background-color: #ff9800;
+    transform: rotate(360deg) scale(1.1); /* دوران وتكبير (درس 12) */
+}
+
+    /*12------*/ 
+    /*12*/
+
+      /*الميديا كيوري للتجاوب درس  13*/ 
+/* حقوق النشر */
+.copy-right {
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px;
+    border-top: 1px solid #333;
+    color: #666;
+    font-size: 0.9rem;
+}
+
